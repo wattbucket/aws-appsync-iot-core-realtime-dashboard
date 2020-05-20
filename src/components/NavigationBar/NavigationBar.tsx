@@ -41,7 +41,10 @@ const NavigationBar: React.FC = () => {
               <Button color="inherit" onClick={()=> handleMap()}>Mapa</Button>
           </div>
           <div className={classes.toolbarButtons}>
-              <Button color="inherit" onClick={()=> handleMap()}>Inicio</Button>
+              <Button color="inherit" onClick={() => {
+            window.location.href = 'https://asolear.es/';
+            return null;
+          }}>Inicio</Button>
           </div>
         </Toolbar>
     </AppBar>
