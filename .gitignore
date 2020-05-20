@@ -1,6 +1,9 @@
 #Mac
 .DS_Store
 
+#VS Code
+.vscode
+
 #amplify
 amplify/\#current-cloud-backend
 amplify/.config/local-*
@@ -13,9 +16,6 @@ node_modules/
 aws-exports.js
 awsconfiguration.json
 amplifyconfiguration.json
+amplify-build-config.json
 amplify-gradle-config.json
 amplifyxc.config
-team-provider-info.json
-
-#VS Code
-.vscode

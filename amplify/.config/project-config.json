@@ -2,7 +2,7 @@
     "providers": [
         "awscloudformation"
     ],
-    "projectName": "iotdashboard",
+    "projectName": "aws-appsync-iot-core-realtime-dashboard",
     "version": "3.0",
     "frontend": "javascript",
     "javascript": {
