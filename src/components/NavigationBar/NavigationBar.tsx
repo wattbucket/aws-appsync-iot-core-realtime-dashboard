@@ -34,11 +34,14 @@ const NavigationBar: React.FC = () => {
     <AppBar position="fixed">
         <Toolbar>
             <Typography variant="h6" className={classes.title}>
-              Bay Health Dashboard
+            Instalación Fotovoltaica
             </Typography>
           
           <div className={classes.toolbarButtons}>
-              <Button color="inherit" onClick={()=> handleMap()}>Map</Button>
+              <Button color="inherit" onClick={()=> handleMap()}>Mapa</Button>
+          </div>
+          <div className={classes.toolbarButtons}>
+              <Button color="inherit" onClick={()=> handleMap()}>Inicio</Button>
           </div>
         </Toolbar>
     </AppBar>

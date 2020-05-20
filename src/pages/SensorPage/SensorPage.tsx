@@ -35,7 +35,7 @@ const SensorPage: React.FC = () => {
   const classes = useStyles();
   const { id } = useParams();
 
-  const [name, setName] = useState("Fetching sensor data...");
+  const [name, setName] = useState("Buscando datos del sensor..");
   const [value, setValue] = useState<number | null>(null);
 
   //subscribe to changes to the sensor's value
@@ -81,7 +81,7 @@ const SensorPage: React.FC = () => {
         <Grid item xs={12} sm={6} md={3} lg={3} xl={3}>
           <NumericWidget
             mode={WIDGET_MODE.CURRENT}
-            title="Current Value"
+            title="Potencia"
             value={value}
           />
         </Grid>
@@ -89,7 +89,7 @@ const SensorPage: React.FC = () => {
         <Grid item xs={12} sm={6} md={3} lg={3} xl={3}>
           <NumericWidget
             mode={WIDGET_MODE.MIN}
-            title="Min"
+            title="Energia Hoy"
             value={value}
           />
         </Grid>
@@ -97,7 +97,7 @@ const SensorPage: React.FC = () => {
         <Grid item xs={12} sm={6} md={3} lg={3} xl={3}>
           <NumericWidget
             mode={WIDGET_MODE.MAX}
-            title="Max"
+            title="Energia Mensual"
             value={value}
           />
         </Grid>
@@ -105,16 +105,17 @@ const SensorPage: React.FC = () => {
         <Grid item xs={12} sm={6} md={3} lg={3} xl={3}>
           <NumericWidget
             mode={WIDGET_MODE.AVG}
-            title="Avg"
+            title="Energia Total"
             value={value}
           />
         </Grid>
+        
       </Grid>
 
       <Grid container spacing={4}>
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
         <LineChartWidget
-            title="Values"
+            title="Potencia y Energia"
             value={value}
           />
         </Grid>
