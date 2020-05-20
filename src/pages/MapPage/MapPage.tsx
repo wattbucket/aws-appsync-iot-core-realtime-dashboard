@@ -42,12 +42,13 @@ const MapPage: React.FC = () => {
   
   const history = useHistory();
   const classes = useStyles();
-  const maxZoom = 10;
+  const maxZoom = 6;
 
   //state variables
+  // ecija 37.538117, -5.010739
   const [viewPort, setViewPort] = useState<IViewPort>({
-        latitude: 37.666743,
-        longitude: -122.185435,
+        latitude: 38.538117,
+        longitude: -5.010739,
         zoom: maxZoom,
         bearing: 0,
         pitch: 0

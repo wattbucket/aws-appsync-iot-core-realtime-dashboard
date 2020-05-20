@@ -1,7 +1,7 @@
 {
-  "host": "",
-  "keyPath": "",
-  "certPath": "",
-  "caPath": "",
-  "clientId": ""
+  "host": "a2fy92yepupt1e-ats.iot.eu-west-1.amazonaws.com",
+  "keyPath": "./certs/sensor-1590015709589-private.pem.key",
+  "certPath": "./certs/sensor-1590015709589-certificate.pem.crt",
+  "caPath": "./certs/AmazonRootCA1.pem",
+  "clientId": "sensor-1590015709589"
 }
