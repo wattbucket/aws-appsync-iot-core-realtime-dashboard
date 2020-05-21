@@ -109,7 +109,7 @@ const SensorPage: React.FC = () => {
             value={value}
           />
         </Grid>
-        
+
       </Grid>
 
       <Grid container spacing={4}>

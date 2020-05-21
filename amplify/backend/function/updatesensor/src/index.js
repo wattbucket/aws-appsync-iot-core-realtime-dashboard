@@ -16,28 +16,28 @@ const region = process.env.REGION
 const apiIotdashboardGraphQLAPIEndpointOutput = process.env.API_IOTDASHBOARD_GRAPHQLAPIENDPOINTOUTPUT
 
 AWS.config.update({
-    region: region
+  region: region
 });
 
 const credentials = AWS.config.credentials;
 
 exports.handler = async (event) => {
 
-    console.log('event received:' + JSON.stringify(event));
-    
-    //create appsync client - using IAM permissions
-    const graphqlClient = new appsync.AWSAppSyncClient({
-        url: apiIotdashboardGraphQLAPIEndpointOutput,
-        region: region,
-        auth: {
-          type: 'AWS_IAM',
-          credentials: credentials
-        },
-        disableOffline: true
-    });
+  console.log('event received:' + JSON.stringify(event));
 
-    //define the graphql mutation to update the sensor
-    const mutation = gql`mutation UpdateSensor(
+  //create appsync client - using IAM permissions
+  const graphqlClient = new appsync.AWSAppSyncClient({
+    url: apiIotdashboardGraphQLAPIEndpointOutput,
+    region: region,
+    auth: {
+      type: 'AWS_IAM',
+      credentials: credentials
+    },
+    disableOffline: true
+  });
+
+  //define the graphql mutation to update the sensor
+  const mutation = gql`mutation UpdateSensor(
         $input: UpdateSensorInput!
         $condition: ModelSensorConditionInput
       ) {
@@ -52,45 +52,47 @@ exports.handler = async (event) => {
         }
       }`;
 
-    //set the status based on the current value
-    let status = 1;
-    
-    if (event.data.value < 5 || event.data.value > 9) {
-        status = 3;
-    } else if (event.data.value >= 5 && event.data.value <= 6){
-        status = 2;
-    } else if (event.data.value >= 8 && event.data.value <= 9){
-      status = 2;
-    }
+  //set the status based on the current value
+  let status = 1;
 
-    //execute the mutation
-    try {
+  if (event.data.value < 5 || event.data.value > 9) {
+    status = 3;
+  } else if (event.data.value >= 5 && event.data.value <= 6) {
+    status = 2;
+  } else if (event.data.value >= 8 && event.data.value <= 9) {
+    status = 2;
+  }
 
-      var r = await graphqlClient.mutate({
-        mutation,
-        variables: {input: {
-            id: event.id,
-            value: event.data.value,
-            status: status,
-            timestamp: event.data.timestamp
-        }}
-      });
+  //execute the mutation
+  try {
 
-      const response = {
-        statusCode: 200,
-        body: JSON.stringify({ message: 'Success', data: r })
+    var r = await graphqlClient.mutate({
+      mutation,
+      variables: {
+        input: {
+          id: event.id,
+          value: event.data.value,
+          status: status,
+          timestamp: event.data.timestamp
+        }
       }
-    
-      return response
-    }
-    catch (err) {
+    });
 
-      const response = {
-        statusCode: 400,
-        body: JSON.stringify({ message: err.message })
-      }
-
-      return response
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify({ message: 'Success', data: r })
     }
+
+    return response
+  }
+  catch (err) {
+
+    const response = {
+      statusCode: 400,
+      body: JSON.stringify({ message: err.message })
+    }
+
+    return response
+  }
 }
 

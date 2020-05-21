@@ -9,13 +9,13 @@ const useStyles = makeStyles((theme: Theme) => ({
         display: 'flex',
         overflow: 'auto',
         flexDirection: 'column',
-        height: 175
+        height: 100
     },
     title: {
         fontSize:20
     },
     value: {
-        fontSize:75,
+        fontSize:25,
         marginTop:10,
         marginLeft:'auto',
         marginRight:'auto'
