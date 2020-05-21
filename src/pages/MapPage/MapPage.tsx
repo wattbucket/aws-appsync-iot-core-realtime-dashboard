@@ -42,10 +42,10 @@ const MapPage: React.FC = () => {
   
   const history = useHistory();
   const classes = useStyles();
-  const maxZoom = 6;
+  const maxZoom = 5;
 
   //state variables
-  // ecija 37.538117, -5.010739
+  // ecija 37.538117, -5.010739 granada
   const [viewPort, setViewPort] = useState<IViewPort>({
         latitude: 38.538117,
         longitude: -5.010739,
